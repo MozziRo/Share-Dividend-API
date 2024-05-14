@@ -24,6 +24,8 @@ public class CacheConfig {
     @Value("${spring.redis.port}")
     private int port;
 
+
+    //redis 는 외부에 있는 캐시 서버이기 때문에 자바에서 redis로 데이터를 저장할 수 있도록 데이터 직렬화를 해준다. -
     @Bean
     public CacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration conf = RedisCacheConfiguration.defaultCacheConfig()

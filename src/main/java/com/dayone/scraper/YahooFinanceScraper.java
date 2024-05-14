@@ -58,7 +58,7 @@ public class YahooFinanceScraper implements Scraper {
                     throw new RuntimeException("Unexpected Month enum value -> " + splits[0]);
                 }
 
-                Dividend d = null;  // not implemented yet
+                Dividend d = new Dividend(LocalDateTime.of(year, month, day, 0, 0), dividend);  // not implemented yet
                 dividends.add(d);
 
             }

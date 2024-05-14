@@ -43,7 +43,7 @@ public class CompanyService {
     }
 
     public Page<CompanyEntity> getAllCompany(Pageable pageable) {
-        throw new NotYetImplementedException();
+        return this.companyRepository.findAll(pageable);
     }
 
     private Company storeCompanyAndDividend(String ticker) {
@@ -65,7 +65,12 @@ public class CompanyService {
     }
 
     public List<String> getCompanyNamesByKeyword(String keyword) {
-        throw new NotYetImplementedException();
+        Pageable limit = PageRequest.of(0, 10);
+
+        Page<CompanyEntity> companyEntities = this.companyRepository.findByNameStartingWithIgnoreCase(keyword, limit);
+        return companyEntities.stream()
+                .map(e -> e.getName())
+                .collect(Collectors.toList());
     }
 
     public void addAutocompleteKeyword(String keyword) {

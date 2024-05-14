@@ -9,6 +9,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 public class SchedulerConfig implements SchedulingConfigurer {
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        // thread를 더 생성하여 일꾼을 늘린다
         ThreadPoolTaskScheduler threadPool = new ThreadPoolTaskScheduler();
 
         int n = Runtime.getRuntime().availableProcessors();
